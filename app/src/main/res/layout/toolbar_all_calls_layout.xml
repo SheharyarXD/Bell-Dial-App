@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_50"
+    android:layout_alignParentTop="true"
+    android:background="@color/colorWhite"
+    android:elevation="@dimen/dp_2"
+    android:orientation="horizontal">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_all_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <ImageView
+        android:id="@+id/imageViewStatus"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="@dimen/dp_10"
+        android:padding="@dimen/dp_2"
+        android:src="@drawable/signal_high" />
+
+    <LinearLayout
+        android:id="@+id/layoutAll"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_2">
+
+        <LinearLayout
+            android:id="@+id/layoutAllCalls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_5">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewAllCalls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/lato_regular"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_25"
+                android:paddingRight="@dimen/dp_25"
+                android:text="All "
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sp_14" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutMissedCall"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bg_white"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_5">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewMissedCall"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:fontFamily="@font/lato_regular"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_20"
+                android:paddingRight="@dimen/dp_20"
+                android:text="Missed"
+                android:textAllCaps="false"
+                android:textColor="@color/colorGreen"
+                android:textSize="@dimen/sp_14" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

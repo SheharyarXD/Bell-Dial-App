@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorWhite"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbarSettings"
+        layout="@layout/toolbar_back_title_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarSettings"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchDebug"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Debug"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchFriendlistsubscribe"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Friendlist subscribe"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchBgMode"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Background mode"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textBgDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:text="Show a notification to keep the app live"
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchStartAtBootTime"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Start at boot time"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Device name"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:text="Changes will be applied at next start up"
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_12" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etDeviceName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:hint="Device Name"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Remote provisioning"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etRemoteprovisioning"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:hint="Remote provisioning"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutAndroidAppSettings"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Android app settings"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Display name"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etSettingsDisplayname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:text="Linphone Android"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Username"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etSettingsUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:text="linphone.android"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

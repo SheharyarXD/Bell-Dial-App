@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <include
+        android:id="@+id/toolbar_sms_frag"
+        layout="@layout/toolbar_back_title_layout" />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorE"/>
+        <androidx.cardview.widget.CardView
+            android:clickable="true"
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite">
+
+            <LinearLayout
+                android:clickable="true"
+                android:id="@+id/linearNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/dp_4"
+                android:paddingBottom="@dimen/dp_4">
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/imgthreeDots"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_5" />
+
+                <EditText
+                    android:id="@+id/textViewNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:inputType="phone"
+                    android:imeOptions="actionDone"
+                    android:text=""
+                    android:textIsSelectable="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_22" />
+
+                <ImageView
+                    android:id="@+id/imageViewRemove"
+                    android:layout_width="@dimen/dp_45"
+                    android:layout_height="@dimen/dp_45"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:padding="@dimen/dp_8"
+                    android:src="@drawable/number_erase" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorE"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layoutMsgs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/sms_frame"
+                android:layout_margin="10dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMessages"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="16dp"/>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Send from"
+                    android:fontFamily="@font/lato_bold"
+                    android:textSize="12sp"
+                    android:textColor="#0D2753"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="10dp"
+                    />
+
+
+                <LinearLayout
+                    android:id="@+id/llSenderPicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="@drawable/sms_field_frame">
+
+                    <TextView
+                        android:id="@+id/tvSender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Default"
+                        android:fontFamily="@font/lato"
+                        android:textSize="12sp"
+                        android:textColorHint="#BBBBBB"
+                        android:textColor="#0D2753"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_drop_arrow"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="10dp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Available \nSMS Balance"
+                    android:textColor="#BBBBBB"
+                    android:gravity="center"
+                    android:layout_marginEnd="10dp"/>
+
+                <FrameLayout
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/blue_btn">
+
+                    <TextView
+                        android:id="@+id/tvBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        android:text="..."
+                        android:layout_gravity="center"/>
+
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/etMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="Type your message"
+                        android:textSize="12sp"
+                        android:maxLength="160"
+                        android:gravity="top|start"
+                        android:padding="15dp"
+                        android:inputType="textMultiLine"
+                        android:fontFamily="@font/lato"
+                        android:background="@drawable/sms_field_frame"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:text="160 character = 1 SMS"
+                            android:textColor="#000"
+                            android:textSize="8sp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/tvCharactersCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="160 characters remaining"
+                            android:textColor="#000"
+                            android:textSize="8sp"
+                            android:fontFamily="@font/lato"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:id="@+id/btnSend"
+                    android:layout_width="100dp"
+                    android:layout_height="38dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/send_btn"
+                    android:layout_gravity="bottom"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSearchContacts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+</LinearLayout>

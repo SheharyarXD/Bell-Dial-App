@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorWhite"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbarSettings"
+        layout="@layout/toolbar_back_title_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarSettings"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchEchoCancellation"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Echo Cancellation"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:text="Remove the echo heard by other end"
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutEchoCanceler"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Echo canceler calibration"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewEcho"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:background="@null"
+                    android:text="calibrated in-1 ms"
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutTestEcho"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Test echo"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewTestEcho"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:visibility="gone"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:background="@null"
+                    android:text=""
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchAdaptiveRate"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Adaptive rate control"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutCodecBitrate"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Codec bitrate limit"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewCodecBitrate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:text="36 kbits/s"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchopus48KHz"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="opus 48KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchspeex16KHz"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="speex 16KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchspeex8KHz"
+
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="speex 8KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchpcmu8KHz"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="pcmu 8KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchpcma8KHz"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="pcma 8KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchgsm8KHz"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="gsm 8KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchg7228KHz"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="g722 8KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchg7298KHz"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="g729 8KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchlibc8KHz"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="libc 8KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchspeex32KHz"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="speex 32KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchL1644KHz"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="L16 44KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchisac16KHz"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="isac 16KHz"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

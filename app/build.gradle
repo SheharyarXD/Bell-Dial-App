@@ -1,0 +1,296 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
+
+static def getPackageName() {
+    return "belldial.co.uk"
+}
+
+static def firebaseEnabled() {
+    File googleFile = new File('app/google-services.json')
+    return googleFile.exists()
+}
+
+static def isLocalDebugAarAvailable() {
+    File debugAar = new File('linphone-sdk-android/linphone-sdk-android-debug.aar')
+    return debugAar.exists()
+}
+
+static def isLocalReleaseAarAvailable() {
+    File releaseAar = new File('linphone-sdk-android/linphone-sdk-android-release.aar')
+    return releaseAar.exists()
+}
+
+static def isLocalAarAvailable() {
+    return isLocalDebugAarAvailable() || isLocalReleaseAarAvailable()
+}
+
+tasks.register('getGitVersion') {
+    def gitVersion = "4.1"
+    def gitVersionStream = new ByteArrayOutputStream()
+
+    try {
+        exec {
+            executable "git" args "describe", "--always"
+            standardOutput = gitVersionStream
+        }
+        gitVersion = gitVersionStream.toString().trim()
+        println("Git version: " + gitVersion)
+    } catch (Exception ignored) {
+        println("Git not found")
+    }
+    project.version = gitVersion
+}
+
+///// Exclude Files /////
+
+def excludeFiles = []
+if (!firebaseEnabled()) {
+    excludeFiles.add('**/Firebase*')
+    println '[Push Notification] Firebase disabled'
+}
+// Remove or comment if you want to use those
+excludeFiles.add('**/XmlRpc*')
+excludeFiles.add('**/InAppPurchase*')
+
+def excludePackage = []
+
+excludePackage.add('**/gdb.*')
+excludePackage.add('**/libopenh264**')
+excludePackage.add('**/**tester**')
+excludePackage.add('**/LICENSE.txt')
+
+/////////////////////////
+
+//repositories {
+//    maven {
+//        url "https://linphone.org/maven_repository/"
+//    }
+//}
+
+project.tasks['preBuild'].dependsOn 'getGitVersion'
+
+android {
+    signingConfigs {
+    release {
+        storeFile file("../APK_Keystore/bc-android.keystore")
+        storePassword "123456789"
+        keyAlias "Belldial"
+        keyPassword "123456789"
+        v1SigningEnabled true
+        v2SigningEnabled true
+    }
+}
+
+    namespace 'belldial.co.uk'
+    compileSdk = 36
+
+    defaultConfig {
+        minSdk = 23
+        targetSdk = 36
+        versionCode 96
+        versionName "5.3.4"
+        applicationId 'belldial.co.uk'
+        multiDexEnabled true
+        manifestPlaceholders = [linphone_address_mime_type: "vnd.android.cursor.item/vnd." + getPackageName() + ".provider.sip_address"]
+    }
+
+    applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach {
+            outputFileName = "linphone-android-${variant.buildType.name}-${project.version}.apk"
+        }
+    }
+
+//    def keystorePropertiesFile = rootProject.file("keystore.properties")
+//    def keystoreProperties = new Properties()
+//    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+//
+//    signingConfigs {
+//        release {
+//            storeFile file(keystoreProperties['storeFile'])
+//            storePassword keystoreProperties['storePassword']
+//            keyAlias keystoreProperties['keyAlias']
+//            keyPassword keystoreProperties['keyPassword']
+//        }
+//    }
+
+    buildTypes {
+        release {
+//            minifyEnabled true
+//            shrinkResources true
+
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            resValue "string", "sync_account_type", getPackageName() + ".sync"
+            resValue "string", "file_provider", getPackageName() + ".provider"
+            resValue "string", "linphone_address_mime_type", "vnd.android.cursor.item/vnd." + getPackageName() + ".provider.sip_address"
+
+            if (!firebaseEnabled()) {
+                resValue "string", "gcm_defaultSenderId", "none"
+            }
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+            jniDebuggable true
+
+            resValue "string", "sync_account_type", getPackageName() + ".sync"
+            resValue "string", "file_provider", getPackageName() + ".provider"
+            resValue "string", "linphone_address_mime_type", "vnd.android.cursor.item/vnd." + getPackageName() + ".provider.sip_address"
+
+            if (!firebaseEnabled()) {
+                resValue "string", "gcm_defaultSenderId", "none"
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            java.excludes = excludeFiles
+        }
+    }
+    packagingOptions {
+        jniLibs {
+            pickFirsts += ['lib/x86/libc++_shared.so', 'lib/x86_64/libc++_shared.so', 'lib/armeabi-v7a/libc++_shared.so', 'lib/arm64-v8a/libc++_shared.so']
+        }
+        resources {
+            excludes += ['META-INF/MANIFEST.MF', 'META-INF/proguard/androidx-annotations.pro']
+            pickFirsts += ['META-INF/NOTICE', 'META-INF/LICENSE']
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
+
+    }
+    lint {
+        abortOnError false
+    }
+
+    ndkVersion '29.0.14206865'
+
+    buildFeatures {
+        buildConfig = true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+
+    if (firebaseEnabled()) {
+        implementation platform('com.google.firebase:firebase-bom:32.2.2')
+        implementation 'com.google.firebase:firebase-analytics'
+        implementation 'com.google.firebase:firebase-crashlytics'
+        implementation 'com.google.firebase:firebase-auth'
+        implementation 'com.google.firebase:firebase-messaging'
+
+        implementation 'com.google.firebase:firebase-appcheck-playintegrity'
+    }
+//    implementation 'com.google.firebase:firebase-appcheck-safetynet:16.1.2'
+    implementation 'androidx.browser:browser:1.9.0'
+
+    implementation 'com.facebook.soloader:soloader:0.12.1'
+
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+//    implementation('org.jitsi.react:jitsi-meet-sdk:8.6.1') { transitive = true }
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+    implementation 'com.github.bumptech.glide:glide:5.0.5'
+
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.asynclayoutinflater:asynclayoutinflater:1.1.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation 'com.google.code.gson:gson:2.13.2'
+    implementation 'com.squareup.retrofit2:retrofit:3.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:3.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:5.3.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.3.2'
+
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
+    implementation 'com.karumi:dexter:6.2.3'
+
+    implementation "androidx.work:work-runtime:2.11.0"
+
+    //Emoji Support
+    implementation "com.vanniktech:emoji-material:0.23.0"
+    implementation "com.vanniktech:emoji-ios:0.23.0"
+
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    // RECAPTCHA VERSION
+    implementation 'com.google.android.recaptcha:recaptcha:18.8.0'
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+
+    debugImplementation "org.linphone:linphone-sdk-android-debug:5.4.+"
+    releaseImplementation "org.linphone:linphone-sdk-android:5.4.+"
+}
+
+
+//
+//
+//    if (isLocalAarAvailable()) {
+//        if (isLocalReleaseAarAvailable()) {
+//            //debug AAR is a lot bigger than release one, and APK install time will be much longer so use release one for day-to-day development
+//            implementation project(path: ":linphone-sdk-android", configuration: 'release')
+//        } else {
+//            releaseImplementation project(path: ":linphone-sdk-android", configuration: 'release')
+//            debugImplementation project(path: ":linphone-sdk-android", configuration: 'debug')
+//        }
+//    } else {
+
+
+
+//}
+
+tasks.register('generateContactsXml', Copy) {
+    from 'contacts.xml'
+    into "src/main/res/xml/"
+    filter {
+        line ->
+            line
+                    .replaceAll('%%AUTO_GENERATED%%', 'This file has been automatically generated, do not edit or commit !')
+                    .replaceAll('%%PACKAGE_NAME%%', getPackageName())
+
+    }
+}
+project.tasks['preBuild'].dependsOn 'generateContactsXml'
+
+tasks.withType(JavaCompile).configureEach {
+    options.fork = true
+    options.forkOptions.jvmArgs += [
+            '--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED',
+            '--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED',
+            '--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED']
+}
+
+//plugins {
+//    id 'com.diffplug.gradle.spotless'
+//}
+//spotless {
+//    java {
+//        target '**/*.java'
+//        googleJavaFormat('1.6').aosp()
+//        removeUnusedImports()
+//    }
+//}
+//spotless {
+//    yaml {
+//        jackson().yamlFeature("MINIMIZE_QUOTES", true)
+//    }
+//}
+
+
+//project.tasks['preBuild'].dependsOn 'spotlessApply'

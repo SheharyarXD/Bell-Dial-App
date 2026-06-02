@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorWhite"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbarSettings"
+        layout="@layout/toolbar_back_title_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarSettings"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchUseWifiOnly"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Use WIFI only"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchAllowIPV6"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Allow IPv6"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchEnablePush"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Enable push notifications"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutBattery"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Battery protected apps settings"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:text="This app must be enabled in order to receive push notifications"
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchRandomPort"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Use Random port"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/layoutSipPortTouse"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="SIP port to use"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_sipPortUse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:text="-1"
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="STUN / TURN server"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etStunServer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:background="@null"
+                    android:text="STUN / TURN server"
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchEnableICE"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Enable ICE"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchEnableTURN"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Enable TURN"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

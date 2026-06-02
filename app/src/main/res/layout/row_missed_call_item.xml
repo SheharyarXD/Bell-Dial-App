@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_5"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_5"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/separator_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_medium"
+            android:gravity="start"
+            android:text="Text"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/sp_14" />
+
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginBottom="@dimen/dp_5"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_8">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageViewConactImage"
+                    android:layout_width="@dimen/dp_35"
+                    android:layout_height="@dimen/dp_35"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/dp_8"
+                    android:src="@drawable/misscall" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textViewConatctName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:ellipsize="end"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/lato_bold"
+                            android:gravity="start"
+                            android:maxLines="1"
+                            android:text="John Deo"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/sp_14" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textViewDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/dp_3"
+                            android:layout_marginTop="@dimen/dp_1"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/lato_regular"
+                            android:gravity="start"
+                            android:maxLines="1"
+                            android:text="20/09/2019 "
+                            android:textColor="@color/colorD"
+                            android:textSize="@dimen/sp_12" />
+
+
+                    </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+
+                                android:id="@+id/textViewCallType"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/dp_1"
+                                android:ellipsize="end"
+                                android:drawablePadding="@dimen/dp_5"
+                                android:fontFamily="@font/lato_regular"
+                                android:maxLines="1"
+                                android:text="Missed Call"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorD"
+                                android:textSize="@dimen/sp_12" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/textViewTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/dp_3"
+                                android:layout_marginTop="@dimen/dp_1"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/lato_regular"
+                                android:gravity="end"
+                                android:layout_marginRight="@dimen/dp_5"
+                                android:maxLines="1"
+                                android:text="04:30 PM "
+                                android:textColor="@color/colorD"
+                                android:textSize="@dimen/sp_12" />
+                        </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:background="@color/colorE" />
+        </LinearLayout>
+
+
+</LinearLayout>

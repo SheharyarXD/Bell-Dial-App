@@ -1,0 +1,138 @@
+package belldial.co.uk.compatibility;
+
+/*
+ApiTwentyNinePlus.java
+Copyright (C) 2019 Belledonne Communications, Grenoble, France
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+
+import static belldial.co.uk.compatibility.Compatibility.INTENT_ANSWER_CALL_NOTIF_ACTION;
+import static belldial.co.uk.compatibility.Compatibility.INTENT_HANGUP_CALL_NOTIF_ACTION;
+import static belldial.co.uk.compatibility.Compatibility.INTENT_LOCAL_IDENTITY;
+import static belldial.co.uk.compatibility.Compatibility.INTENT_MARK_AS_READ_ACTION;
+import static belldial.co.uk.compatibility.Compatibility.INTENT_NOTIF_ID;
+import static belldial.co.uk.compatibility.Compatibility.INTENT_REPLY_NOTIF_ACTION;
+import static belldial.co.uk.compatibility.Compatibility.KEY_TEXT_REPLY;
+
+import android.annotation.TargetApi;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.app.RemoteInput;
+import android.content.Context;
+import android.content.Intent;
+import android.text.Html;
+import androidx.core.content.ContextCompat;
+import androidx.core.text.HtmlCompat;
+import belldial.co.uk.R;
+import belldial.co.uk.notifications.Notifiable;
+import belldial.co.uk.notifications.NotificationBroadcastReceiver;
+
+@TargetApi(29)
+public class ApiTwentyNinePlus {
+
+    public static Notification.Action getReplyMessageAction(Context context, Notifiable notif) {
+        String replyLabel = context.getResources().getString(R.string.notification_reply_label);
+        RemoteInput remoteInput = new RemoteInput.Builder(KEY_TEXT_REPLY).setLabel(replyLabel).build();
+
+        Intent replyIntent = new Intent(context, NotificationBroadcastReceiver.class);
+        replyIntent.setAction(INTENT_REPLY_NOTIF_ACTION);
+        replyIntent.putExtra(INTENT_NOTIF_ID, notif.getNotificationId());
+        replyIntent.putExtra(INTENT_LOCAL_IDENTITY, notif.getLocalIdentity());
+
+        PendingIntent replyPendingIntent =
+                PendingIntent.getBroadcast(
+                        context,
+                        notif.getNotificationId(),
+                        replyIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT |PendingIntent.FLAG_IMMUTABLE);
+
+        return new Notification.Action.Builder(
+                        R.drawable.chat_send_over,
+                        context.getString(R.string.notification_reply_label),
+                        replyPendingIntent)
+                .addRemoteInput(remoteInput)
+                .setAllowGeneratedReplies(true)
+                .setSemanticAction(Notification.Action.SEMANTIC_ACTION_REPLY)
+                .setContextual(true)
+                .build();
+    }
+
+    public static Notification.Action getMarkMessageAsReadAction(Context context, Notifiable notif) {
+        Intent markAsReadIntent = new Intent(context, NotificationBroadcastReceiver.class);
+        markAsReadIntent.setAction(INTENT_MARK_AS_READ_ACTION);
+        markAsReadIntent.putExtra(INTENT_NOTIF_ID, notif.getNotificationId());
+        markAsReadIntent.putExtra(INTENT_LOCAL_IDENTITY, notif.getLocalIdentity());
+
+        PendingIntent markAsReadPendingIntent =
+                PendingIntent.getBroadcast(
+                        context,
+                        notif.getNotificationId(),
+                        markAsReadIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT |PendingIntent.FLAG_IMMUTABLE);
+
+        return new Notification.Action.Builder(
+                        R.drawable.chat_send_over,
+                        context.getString(R.string.notification_mark_as_read_label),
+                        markAsReadPendingIntent)
+                .setSemanticAction(Notification.Action.SEMANTIC_ACTION_MARK_AS_READ)
+                .setContextual(true)
+                .build();
+    }
+
+    public static Notification.Action getCallAnswerAction(Context context, int callId) {
+        Intent answerIntent = new Intent(context, NotificationBroadcastReceiver.class);
+        answerIntent.setAction(INTENT_ANSWER_CALL_NOTIF_ACTION);
+        answerIntent.putExtra(INTENT_NOTIF_ID, callId);
+
+        PendingIntent answerPendingIntent = PendingIntent.getBroadcast(context, callId, answerIntent, PendingIntent.FLAG_UPDATE_CURRENT |PendingIntent.FLAG_IMMUTABLE);
+
+        return new Notification.Action.Builder(
+                        R.drawable.icon_accept,
+                        Html.fromHtml(
+                                "<font color=\""
+                                        + ContextCompat.getColor(context, R.color.colorGN)
+                                        + "\">"
+                                        + context.getString(R.string.notification_call_answer_label)
+                                        + "</font>",
+                                HtmlCompat.FROM_HTML_MODE_LEGACY),
+                        answerPendingIntent)
+                .setContextual(true)
+                .build();
+    }
+
+    public static Notification.Action getCallDeclineAction(Context context, int callId) {
+        Intent hangupIntent = new Intent(context, NotificationBroadcastReceiver.class);
+        hangupIntent.setAction(INTENT_HANGUP_CALL_NOTIF_ACTION);
+        hangupIntent.putExtra(INTENT_NOTIF_ID, callId);
+
+        PendingIntent hangupPendingIntent =
+                PendingIntent.getBroadcast(
+                        context, callId, hangupIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        return new Notification.Action.Builder(
+                        R.drawable.icon_decline,
+                        Html.fromHtml(
+                                "<font color=\""
+                                        + ContextCompat.getColor(context, R.color.colorI)
+                                        + "\">"
+                                        + context.getString(R.string.notification_call_hangup_label)
+                                        + "</font>",
+                                HtmlCompat.FROM_HTML_MODE_LEGACY),
+                        hangupPendingIntent)
+                .setContextual(true)
+                .build();
+    }
+}

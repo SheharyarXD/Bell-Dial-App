@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    app:cardCornerRadius="@dimen/dp_5"
+    android:layout_marginLeft="@dimen/dp_5"
+    android:layout_marginRight="@dimen/dp_5"
+    android:layout_marginBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="?selectableItemBackground"
+        android:gravity="center_vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/ivUnknownContact"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:riv_corner_radius="@dimen/dp_10"
+            android:src="@drawable/userr"
+            android:visibility="visible"
+            />
+
+        <FrameLayout
+            android:id="@+id/flContactChars"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/contact_background"
+
+            android:visibility="visible"
+            >
+
+            <TextView
+                android:id="@+id/tvContactChars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BO"
+                android:layout_gravity="center"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:fontFamily="@font/lato_bold"/>
+
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="5dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="John Deo"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/colorGreen"
+                android:textSize="15sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLastMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/lato_regular"
+                android:maxLines="1"
+                android:text="1234567aaaaaaaaaaaaaaaaaa892222"
+                android:textColor="#000"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Just now"
+            android:layout_gravity="top"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="@dimen/dp_5"
+            android:textColor="#30B264"
+            android:textSize="12sp"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

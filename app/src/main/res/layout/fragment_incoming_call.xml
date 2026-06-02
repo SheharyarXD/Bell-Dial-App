@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:keepScreenOn="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/top"
+        layout="@layout/toolbar_back_button_layout" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top"
+        android:layout_marginTop="@dimen/dp_30"
+        android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewCallerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:fontFamily="@font/lato_regular"
+            android:padding="@dimen/dp_5"
+            android:singleLine="true"
+            android:text="1000"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/sp_22" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewConnecting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_2"
+            android:background="@null"
+            android:fontFamily="@font/lato_regular"
+            android:singleLine="true"
+            android:text="Calling..."
+            android:textColor="@color/colorC"
+            android:textSize="@dimen/sp_16"
+            android:visibility="visible" />
+
+        <Chronometer
+            android:id="@+id/current_call_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_5"
+            android:background="@null"
+            android:padding="@dimen/dp_5"
+            android:singleLine="true"
+            android:text="01:00"
+            android:textColor="@color/colorDark"
+            android:textSize="@dimen/sp_14"
+            android:visibility="gone" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewUser"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_150"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_50"
+            android:padding="@dimen/dp_5"
+            android:src="@drawable/callicon" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewCallHangup"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_100"
+            android:layout_marginRight="@dimen/dp_25"
+            android:padding="@dimen/dp_5"
+            android:src="@drawable/endcall" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewAnswer"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_100"
+            android:layout_marginLeft="@dimen/dp_25"
+            android:padding="@dimen/dp_5"
+            android:src="@drawable/call_icon" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+

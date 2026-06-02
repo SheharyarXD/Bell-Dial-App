@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorWhite"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbarSettings"
+        layout="@layout/toolbar_back_title_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarSettings"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchUseDeviceRingtone"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Use device ringtone"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchVibrateIncomingCall"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Vibrate while incoming call is ringing"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutMediaEncryption"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Media encryption"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewMediaEncryption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:background="@null"
+                    android:text="None"
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchInBoundDTMF"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Send in-band DTMFs (RFC2833)"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchSIPInfoDTMF"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Send out-band DTMFs (SIP INFO)"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="@dimen/dp_20"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchRepeatCall"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="@dimen/dp_5"
+
+                    android:drawableEnd="@drawable/switch_selector"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Auto answer incoming calls"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16"
+                    android:thumb="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/layoutAutoAnswerTime"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Auto answer time (in milliseconds)"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/textViewAutoAnswerCallTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:background="@null"
+                    android:text="0"
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Incoming call hangup (in seconds)"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/textViewIncomingCallTimr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:background="@null"
+                    android:text="30"
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutEchoCanceler"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/colorG"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:text="Voice mail URI"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etVoiceMailUrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:background="@null"
+                    android:textColor="@color/colorD"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

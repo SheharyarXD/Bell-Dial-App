@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <include
+        android:id="@+id/toolbarSettings"
+        layout="@layout/toolbar_back_title_layout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRecording"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarSettings">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <TextView
+        android:fontFamily="@font/lato_medium"
+        android:id="@+id/no_recordings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="@dimen/sp_16"
+        android:text="@string/no_recordings" />
+
+</RelativeLayout>

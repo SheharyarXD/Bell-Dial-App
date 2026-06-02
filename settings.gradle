@@ -1,0 +1,50 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+
+        maven {
+            url "https://download.linphone.org/releases/maven_repository/"
+        }
+
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+
+        maven {
+            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+        }
+
+
+
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://www.jitpack.io" } // for com.github.chrisbanes:PhotoView
+
+        maven {
+            name "local linphone-sdk maven repository"
+            url file(LinphoneSdkBuildDir + '/maven_repository/')
+            content {
+                includeGroup "org.linphone"
+            }
+        }
+        maven {
+            name "linphone.org maven repository"
+            url "https://linphone.org/maven_repository"
+            content {
+                includeGroup "org.linphone"
+            }
+        }
+
+    }
+}
+include ':app'
+include ':linphone-sdk-android'
+
